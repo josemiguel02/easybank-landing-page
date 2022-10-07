@@ -1,0 +1,38 @@
+@use '../utilities/mixins' as *;
+
+.button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.8em 2em;
+  color: var(--white);
+  background: linear-gradient(to right, var(--lime-green), var(--brigh-cyan));
+  border-radius: 50px;
+  @include transition(opacity, transform);
+  margin: 2rem 0;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &--header {
+    margin: 0;
+    display: none;
+    font-size: initial;
+  }
+
+  &--footer {
+    margin: 0;
+    padding: 1em 2em;
+    transition-property: filter, transform;
+
+    &:hover {
+      opacity: 1;
+      filter: contrast(0.6);
+    }
+  }
+}

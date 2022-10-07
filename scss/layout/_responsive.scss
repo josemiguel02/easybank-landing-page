@@ -1,0 +1,135 @@
+@use '../utilities/mixins' as *;
+
+@include mq-above(md) {
+  body {
+    font-size: 18px;
+  }
+
+  .nav {
+    all: unset;
+
+    &__list {
+      font-size: initial;
+      font-weight: 300;
+      flex-direction: row;
+      color: var(--grayish-blue);
+    }
+
+    &__link::after {
+      margin-bottom: -1.5rem;
+    }
+  }
+
+  .header__menu {
+    display: none;
+  }
+
+  .button--header {
+    display: block;
+  }
+
+  .intro {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+
+    &__content {
+      height: fit-content;
+      margin-top: 3rem;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    &__heading {
+      font-size: 3.2rem;
+    }
+
+    &__paragraph {
+      white-space: pre-line;
+    }
+
+    &__mockup {
+      order: 1;
+      background: url('/images/bg-intro-desktop.svg') no-repeat;
+      background-size: 200%;
+      background-position-y: -160px;
+    }
+
+    &__mockups {
+      width: 100%;
+      margin-left: auto;
+      transform: translate(90px, -50px);
+    }
+  }
+
+  .services {
+    margin: 0;
+    text-align: left;
+  }
+
+  .latest-articles {
+    &__heading {
+      text-align: left;
+    }
+  }
+
+  .footer {
+    &__container {
+      flex-direction: row;
+      gap: 0;
+      text-align: right;
+    }
+
+    &__section {
+      display: flex;
+      column-gap: 6rem;
+    }
+
+    &__social-icons {
+      margin-top: 3rem;
+    }
+
+    &__links {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-auto-flow: column;
+      justify-items: flex-start;
+      margin-top: 0;
+    }
+  }
+}
+
+@include mq-above(lg) {
+  .intro {
+    &__mockup {
+      background-size: cover;
+      background-position-y: -185px;
+    }
+
+    &__mockups {
+      width: 90%;
+      transform: translate(100px, -100px);
+    }
+  }
+}
+
+@include mq-above(xl) {
+  .intro {
+    &__content {
+      margin-top: 6rem;
+      width: 100%;
+      max-width: 545px;
+      justify-self: flex-end;
+    }
+  }
+
+  .services {
+    position: relative;
+    top: -200px;
+    z-index: -1;
+  }
+
+  .latest-articles {
+    position: relative;
+    top: -100px;
+  }
+}

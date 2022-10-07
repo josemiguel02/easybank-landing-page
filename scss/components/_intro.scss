@@ -1,0 +1,32 @@
+.intro {
+  display: grid;
+  overflow-x: hidden;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.6s ease-in-out;
+  transition-property: opacity, transform;
+
+  &.fade-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 1rem;
+    text-align: center;
+  }
+
+  &__mockup {
+    background: url('/images/bg-intro-mobile.svg') no-repeat;
+    background-size: 100%;
+  }
+
+  &__mockups {
+    width: 100%;
+    display: block;
+    transform: translateY(-90px);
+  }
+}

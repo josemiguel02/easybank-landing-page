@@ -1,0 +1,64 @@
+@use '../abstracts/breakpoints' as *;
+@use '../utilities/mixins' as *;
+
+.latest-articles {
+  width: 100%;
+  max-width: map-get($breakpoints, xl);
+  margin-inline: auto;
+  padding: 4rem 1rem;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s ease-in-out;
+  transition-property: opacity, transform;
+
+  &.fade-in {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &__heading {
+    text-align: center;
+  }
+
+  &__content {
+    width: 100%;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+}
+
+.article {
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: var(--white);
+  width: fit-content;
+
+  &__img {
+    width: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+  }
+
+  &__content {
+    padding: 1rem 1.5rem;
+  }
+
+  &__author {
+    font-size: 0.7rem;
+    color: var(--grayish-blue);
+  }
+
+  &__heading {
+    font-weight: 400;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    @include transition(color);
+
+    &:hover {
+      color: var(--lime-green);
+    }
+  }
+}

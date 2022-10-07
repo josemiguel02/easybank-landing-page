@@ -1,0 +1,103 @@
+@use '../abstracts/breakpoints' as *;
+@use '../utilities/mixins' as *;
+
+.header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: var(--white-alpha);
+  backdrop-filter: blur(20px) saturate(150%);
+  z-index: 3;
+
+  &__container {
+    min-height: 65px;
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    @include transition(transform);
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__menu {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &-img {
+      width: 100%;
+      display: inline-block;
+    }
+  }
+}
+
+.nav {
+  width: 90%;
+  position: absolute;
+  top: 5.5rem;
+  left: 50%;
+  padding: 4rem;
+  transform: translateX(-50%);
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0px 100px 200px hsl(233, 26%, 24%, 0.5),
+    0px 33px 50px hsl(233, 26%, 24%, 0.5);
+  clip-path: circle(0 at center);
+  transition: clip-path 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &--active {
+    clip-path: circle(100% at center);
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__link {
+    @include transition(color);
+  }
+
+  &__link::after {
+    content: '';
+    display: inline-block;
+    width: 95%;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: -0.5rem;
+    background: linear-gradient(to right, var(--lime-green), var(--brigh-cyan));
+    clip-path: inset(0 50%);
+    @include transition(clip-path);
+  }
+
+  &__link:hover {
+    color: var(--dark-blue);
+  }
+
+  &__link:hover::after {
+    clip-path: inset(0);
+  }
+}
